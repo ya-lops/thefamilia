@@ -1,0 +1,33 @@
+---
+interface Props {
+  size?: "s" | "m" | "l";
+}
+
+const { size = "s" } = Astro.props;
+---
+
+<div class:list={["app-logo", { "+m": size == "m", "+l": size == "l" }]}>
+  <mark>the</mark>Familia
+</div>
+
+<style lang="scss">
+  .app-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-text-primary);
+    font-size: clamp(2.4rem, 2vw, 3.6rem);
+    font-weight: 500;
+    user-select: none;
+    outline: none;
+    max-width: 120px;
+
+    &.\+m {
+      max-width: 150px;
+    }
+
+    &.\+l {
+      max-width: 180px;
+    }
+  }
+</style>

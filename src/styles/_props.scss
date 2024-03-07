@@ -1,0 +1,50 @@
+:root {
+  --color-accent: #f44336;
+  --color-surface-0: #fcfcfd;
+  --color-surface-0-light: #fff;
+  --color-surface-1: color-mix(in oklab, var(--color-accent), #fff 95%);
+  --color-accent-dark: color-mix(in oklab, var(--color-accent), #000 5%);
+  --color-accent-darker: color-mix(in oklab, var(--color-accent), #000 10%);
+  --color-accent-light: color-mix(in oklab, var(--color-accent), #fff 5%);
+  --color-accent-lighter: color-mix(in oklab, var(--color-accent), #fff 10%);
+  --color-text-accent: var(--color-accent);
+  --color-text-primary: #212529;
+  --color-text-primary-inverse: #fff;
+  --color-text-secondary: color-mix(
+    in oklab,
+    var(--color-text-primary),
+    #fff 10%
+  );
+  --color-line: #f2f4f7;
+  --color-line-light: color-mix(in oklab, var(--color-line), #fff 5%);
+  --color-line-accent: var(--color-accent);
+  --padding-inline: 1.6rem;
+  --font-family-primary: "Sanchez", Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-secondary: "Exo 2", Tahoma, Geneva, Verdana, sans-serif;;
+  --shadow-1: 0px 4px 30px 0px rgba(0, 0, 0, 0.05);
+  --shadow-2: 0 0 22px rgba(0, 0, 0, 0.075);
+  --shadow-3: 0px 6px 30px rgba(0, 0, 0, 0.06);
+  --radius-1: 3px;
+  --radius-2: 6px;
+  --radius-3: 9px;
+
+  @media (min-width: 576px) {
+    --container-max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    --container-max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    --container-max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    --container-max-width: 1140px;
+  }
+
+  @media (min-width: 1400px) {
+    --container-max-width: 1320px;
+  }
+}

@@ -1,0 +1,59 @@
+---
+const how = [
+  {
+    name: "100% practice",
+    text: "Each lesson is 30 minutes of speaking practice, where 50% is listening to questions, 50% is answering them",
+  },
+  {
+    name: "Dynamics and speed",
+    text: "A mentor creates dynamics so that you can easily perceive future life",
+  },
+  {
+    name: "Assistance",
+    text: "The mentor’s task is to help and gently push so that there are no long pauses between jobs",
+  },
+  {
+    name: "Verified training program",
+    text: "The program develops the skill of wielding weapons, making deals and includes all basic vocabulary and grammar",
+  },
+  {
+    name: "Lesson material",
+    text: "70% - we bring the studied material to automaticity.<br>30% - learning new material",
+  },
+];
+
+const data = how;
+---
+
+<ul class="app-how-list">
+  {
+    data.map((item) => (
+      <li class="_item">
+        <div class="_name">{item.name}</div>
+        <div class="_text" set:html={item.text} />
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .app-how-list {
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    gap: 2.4rem;
+
+    ._name {
+      font-size: 3.2rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      font-family: var(--font-family-secondary);
+    }
+
+    ._text {
+      line-height: 1.5;
+      text-wrap: balance;
+    }
+  }
+</style>

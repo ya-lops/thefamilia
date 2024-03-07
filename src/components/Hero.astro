@@ -1,0 +1,185 @@
+---
+interface Hero {
+  title: string;
+  text: string;
+}
+
+import { Image } from "astro:assets";
+import ButtonLink from "@/components/partial/ButtonLink.astro";
+import heroImage from "@/images/coach.jpg";
+
+const { title, text, classes, ...rest } = Astro.props;
+
+const data = {
+  title: "Let's teach you to survive and live a gangster",
+  text: "Gangster jobs for 10 minutes without contract killings from level zero",
+};
+---
+
+<section class:list={["app-hero", { classes }, { ...rest }]}>
+  <div class="app-hero__inner">
+    <div class="_text">
+      <h1 class="_title">{data.title}</h1>
+      <p>{data.text}</p>
+      <ButtonLink href="#test-lesson" size="l" theme="ghost"
+        >Get free job</ButtonLink
+      >
+
+      <p class="_message">You can do this today!</p>
+    </div>
+    <div class="_image">
+      {}
+      <Image
+        src={heroImage}
+        quality={"high"}
+        alt="Marco DiMarco - author of method The Family"
+      />
+      <aside class="_image-description">
+        <h5>Marco DiMarco</h5>
+        <p>
+          Today Marco DiMarco is one of the most powerful gangsters in Los
+          Santos.
+        </p>
+        <p>He controls most of the city and has many enemies and allies.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .app-hero {
+    --_height: min(500px, 90dvh);
+
+    @media (width > 960px) {
+      --_height: clamp(500px, 100dvh, 800px);
+    }
+
+    display: grid;
+    grid-template-columns: 100%;
+    height: var(--_height);
+    background: var(--color-surface-1);
+    overflow: clip;
+
+    &__inner {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr) repeat(
+          2,
+          minmax(0, calc(var(--container-max-width) / 2))
+        )
+        minmax(0, 1fr);
+      grid-template-areas: ". text image image";
+      height: 100%;
+
+      @media (width < 960px) {
+        grid-template-columns: 100%;
+        grid-template-areas: "image";
+      }
+    }
+
+    ._text {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      gap: 2.4rem;
+      grid-area: text;
+      align-self: center;
+
+      @media (width < 960px) {
+        position: relative;
+        z-index: 2;
+        grid-area: image;
+        padding-block: 3.2rem;
+        padding-inline: 1.6rem;
+        max-width: var(--container-max-width);
+        justify-self: center;
+        height: 100%;
+      }
+
+      h1 {
+        // flex: 1;
+        margin: auto;
+        color: var(--color-text-primary);
+        font-size: clamp(3.2rem, 7vmin, 7.2rem);
+        line-height: 1.15;
+        font-weight: 600;
+        text-wrap: balance;
+        font-family: var(--font-family-secondary);
+      }
+
+      p {
+        color: var(--color-text-secondary);
+        text-wrap: balance;
+      }
+
+      ._message {
+        font-family: var(--font-family-secondary);
+        font-size: 2.4rem;
+      }
+    }
+
+    ._image {
+      position: relative;
+      grid-area: image;
+
+      @media (width < 960px) {
+        place-self: end end;
+        text-align: right;
+      }
+
+      img {
+        animation: shadowin forwards;
+        animation-delay: 0.33s;
+        animation-duration: 1.5s;
+
+        @keyframes shadowin {
+          from {
+            filter: drop-shadow(0 0 0 #fe52523d) drop-shadow(0 0 0 #fe525221);
+          }
+          to {
+            filter: drop-shadow(42px 0 0 #fe52523d)
+              drop-shadow(84px 0 0 #fe525221);
+          }
+        }
+
+        @media (width < 960px) {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.5;
+          margin-left: auto;
+          translate: 50% 0;
+          height: var(--_height);
+        }
+
+        @media (width > 960px) {
+          width: auto;
+          height: var(--_height);
+        }
+      }
+    }
+
+    ._image-description {
+      display: none;
+
+      @media (width > 960px) {
+        position: absolute;
+        left: 10%;
+        bottom: 10%;
+        display: block;
+        padding: 0.8rem;
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: -24px 0 0 rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(5px);
+
+        h5 {
+          font-family: var(--font-family-secondary);
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+</style>

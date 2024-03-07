@@ -1,0 +1,29 @@
+---
+import mentors from "@/data/mentors";
+
+import PersonCard from "@/components/partial/PersonCard.astro";
+
+const data = mentors;
+---
+
+<div class="app-mentors">
+  <div class="app-pricing__inner">
+    {data.map((person) => <PersonCard data={person} />)}
+  </div>
+</div>
+
+<style lang="scss">
+  .app-pricing {
+    width: 100%;
+    
+    &__inner {
+      display: grid;
+      gap: 2.4rem;
+
+      @media (width > 992px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2.4rem;
+      }
+    }
+  }
+</style>

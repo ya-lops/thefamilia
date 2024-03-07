@@ -1,0 +1,187 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/components/Hero.astro";
+import Section from "@/components/Section.astro";
+import Pricing from "@/components/Pricing.astro";
+import PersonList from "@/components/PersonList.astro";
+import Features from "@/components/Features.astro";
+import Review from "@/components/ReviewList.astro";
+import Split from "@/components/partial/Split.astro";
+import HowItWorks from "@/components/HowItWorks.astro";
+import WorkFlow from "@/components/WorkFlow.astro";
+import ButtonLink from "@/components/partial/ButtonLink.astro";
+---
+
+<BaseLayout>
+  <Hero />
+
+  <Section
+    centeredTitle
+    subtitle="the Familia"
+    title="<mark>the Familia</mark> – a method for quickly immersing yourself in the world of gangsters"
+  />
+
+  <Section id="about" title="Marco DiMarco <mark>story</mark>">
+    <p>
+      Marco DiMarco is a young and ambitious gangster who grew up in the poor
+      neighborhoods of Los Santos. Since childhood, he was surrounded by
+      violence and crime, which influenced his character and worldview. Marco
+      quickly realized that the only way to survive in this world was to become
+      strong and cruel.
+    </p>
+
+    <p>
+      In his youth, he began boxing to become stronger and more confident. But
+      his talent and ambitions were not limited to sports. Marco dreamed of
+      power and wealth, and he knew that the only way to achieve this was to
+      become part of the criminal world.
+    </p>
+
+    <p>
+      He soon joined one of the local gangs and began his career as a gangster.
+      He quickly established himself as a brutal and ruthless fighter, ready to
+      do anything for his gang. Marco became known for his daring robberies,
+      bloody showdowns and merciless murders.
+    </p>
+
+    <p>
+      Today Marco DiMarco is one of the most powerful gangsters in Los Santos.
+      He controls most of the city and has many enemies and allies. But despite
+      all his achievements, Marco does not stop there and continues to strive
+      for more. He is always ready for new challenges and is ready to risk
+      everything for his goal - to become the most powerful gangster
+    </p>
+  </Section>
+
+  <Section
+    id="how-it-works"
+    title="How the method works - says <mark>Marco DiMarco</mark>"
+  >
+    <Split>
+      <Fragment slot="start">
+        <img src="/images/mentor.jpg" />
+      </Fragment>
+      <Fragment slot="end">
+        <HowItWorks />
+      </Fragment>
+    </Split>
+  </Section>
+
+  <Section
+    centeredTitle
+    subtitle="the Familia"
+    title="Using my method <mark>disciples of any level will be able to change life</mark> - from the homeless to white-collar workers"
+  />
+
+  <Section
+    centeredTitle
+    title="Stories take place <mark>on real streets</mark> with a mentor"
+  >
+    <WorkFlow />
+  </Section>
+
+  <Section
+    centeredTitle
+    title="Sign up for <mark>free job</mark> and get up to 25% discount"
+  >
+    <ButtonLink
+      classes="+centered"
+      size="l"
+      href="#get-free-hint-form"
+      theme="ghost">Sign up for free job</ButtonLink
+    >
+  </Section>
+
+  <Section
+    id="mentors"
+    title="Our mentors are <mark>allies</mark> with whom it is easy to get in touch"
+    subtitle="Mentors"
+  >
+    <PersonList />
+    <hr />
+
+    <div class="_free-lesson">
+      <h3><mark>Free introductory lesson - with a mentor</mark></h3>
+      <p>
+        The introductory lesson will be taught by your future boss, not a sales
+        manager or methodologist. You'll get to know your boss before your first
+        real job.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    id="pricing"
+    title="Learn to speak and think like a real Capo from <mark>$599</mark>"
+    subtitle="Pricing"
+  >
+    <Pricing />
+  </Section>
+
+  <Section
+    title="More than <mark>300</mark> of our Giovane D'Onore have become Capo"
+    subtitle="Their stories"
+  >
+    <Review />
+  </Section>
+</BaseLayout>
+
+<style is:global>
+  mark {
+    color: var(--color-accent);
+    background: none;
+  }
+
+  .\+centered {
+    margin-inline: auto;
+  }
+
+  img {
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .\+frame {
+    position: relative;
+    isolation: isolate;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--color-accent);
+      transform: rotate(1deg) skewX(2deg);
+      z-index: -1;
+      border-radius: var(--radius-3);
+    }
+
+    & + &::after {
+      transform: rotate(-0.5deg) skewX(-2.71deg);
+    }
+
+    & + & + &::after {
+      transform: rotate(-1.5deg) skewX(-1.71deg);
+    }
+  }
+
+  ._free-lesson {
+    text-wrap: balance;
+    line-height: 1.5;
+
+    h3 {
+      font-family: var(--font-family-secondary);
+      font-size: 3.2rem;
+    }
+
+    p {
+      font-size: 2.4rem;
+    }
+  }
+
+  hr {
+    width: 100%;
+    border: 0;
+    height: 2px;
+    background: var(--color-accent);
+  }
+</style>
